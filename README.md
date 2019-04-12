@@ -1,15 +1,18 @@
 # Deploying KIXEYE Test Application using Ansible and Docker-compose
 
 
-This is the Ansible playbook run on CentOS7 remote server to deploy KIXEYE Test Application automatically
+This is the Ansible playbook and Docker-compose file will be used for:
+- Deploying KIXEYE Test Application to remote server automatically
+- Dockerizing KIXEYE Test Application on remote server
 
 The requirement of application is: https://github.com/Kixeye/testapp/blob/master/README.md
 
 ## Requirement to run this Ansible playbook:
 - Remote server is CentOS 7
-- SSH key was added to Remote server
-- Configure remote server in hosts file of ansible configuration
-- Change variable *hosts* to the hostname of your remote server in testapp.yml file
+- SSH key of local machine was added to Remote server
+- On local machine:
+  - Configure remote server in hosts file of ansible configuration
+  - Change variable *hosts* to the hostname of your remote server in testapp.yml file
 
 ```
 ---
