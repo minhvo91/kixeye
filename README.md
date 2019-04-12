@@ -7,8 +7,9 @@ The requirement of application is: https://github.com/Kixeye/testapp/blob/master
 
 ## Requirement to run this Ansible:
 - Remote server is CentOS 7
+- SSH key was added to Remote server
 - Configure remote server in hosts file of ansible configuration
-- Change variable *host* to the hostname of your remote server in testapp.yml file
+- Change variable *hosts* to the hostname of your remote server in testapp.yml file
 
 ```
 ---
@@ -18,11 +19,11 @@ The requirement of application is: https://github.com/Kixeye/testapp/blob/master
 
 ## How to use
 
-1. Clone this repo to your machine
+1. **Clone this repo to your machine**
 ```
 [minhvo@localhost ~]$ git clone https://github.com/minhvo91/kixeye.git
 ```
-2. Running testapp.yml playbook on your machine
+2. **Running testapp.yml playbook on your machine**
 ```
 [minhvo@localhost ~]$ cd kixeye
 [minhvo@localhost ~/kixeye]$ ansible-playbook testapp.yml                                                     ✔  4196  23:00:10 
@@ -75,7 +76,7 @@ vagrant-centos7            : ok=11   changed=2    unreachable=0    failed=0
 
 ```
 
-3. Check the app if it is up and running correctly (On remote server)
+3. **Check the app if it is up and running correctly (On remote server)**
 ```
 [vagrant@vagrant-centos7 ~]$ curl http://localhost:8080/leaderboard
 [{"userId":3,"score":-1236509442},{"userId":4,"score":-1164950331}]
@@ -83,7 +84,7 @@ vagrant-centos7            : ok=11   changed=2    unreachable=0    failed=0
 
 OR You can check by URL: http://<remote-server-ip>:8080/leaderboard
 
-4. Checking the log (On remote server)
+4. **Checking the log (On remote server)**
 ```
 [vagrant@vagrant-centos7 ~]$ tail -f /var/log/testapp.log 
 redis.local_1  | 2019-04-12T16:06:53.288142818Z 1:M 12 Apr 2019 16:06:53.287 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
