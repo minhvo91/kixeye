@@ -1,0 +1,58 @@
+---
+ - hosts: vagrant-centos7
+   become: yes
+   become_user: root
+
+   tasks:
+    - name: "Install EPEL Repository"
+      yum: name=epel-release state=latest
+
+    - name: "Install pip"
+      yum: name=python-pip state=present
+
+    - name: "Installing Docker Prerequisite packages"
+      yum: name={{ item }} state=latest  update_cache=true
+      with_items:
+        - yum-utils
+        - device-mapper-persistent-data
+        - lvm2
+        - python-pip
+
+    - name: "Configuring docker-ce repo"
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+        mode: 0644
+
+    - name: " Installing Docker latest version"
+      yum: name={{ item }} state=latest  update_cache=true
+      with_items:
+        - docker-ce 
+        - docker-ce-cli 
+        - containerd.io
+
+    - name: " Starting and Enabling Docker service"
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: "Install docker-compose"
+      pip: name=docker-compose
+
+    - name: "Copy docker project to remote host"
+      copy:
+       src: ./testapp
+       dest: /home/
+       owner: root
+       group: root
+
+    - name: "Creating testapp by Docker"
+      docker_service: 
+        project_src: /home/testapp
+
+    - name: "Logging TestApp Docker Container"
+      shell:  cd /home/testapp && nohup docker-compose logs -f -t >> /var/log/testapp.log &
+
+
+
