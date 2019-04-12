@@ -12,7 +12,7 @@ The requirement of application is: https://github.com/Kixeye/testapp/blob/master
 - SSH key of local machine was added to Remote server
 - On local machine:
   - Configure remote server in hosts file of ansible configuration
-  - Change variable *hosts* to the hostname of your remote server in testapp.yml file
+  - Change variable **hosts** to the hostname of your remote server in testapp.yml file
 
 ```
 ---
