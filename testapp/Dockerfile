@@ -1,6 +1,6 @@
 FROM minhvo/centos7-jre:1.8.121
 
-MAINTAINER  Minh VO <minhvv91@gmail.com>
+MAINTAINER  Minh VO
 
 WORKDIR /var/opt/testapp
 
