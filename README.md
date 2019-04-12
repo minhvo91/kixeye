@@ -85,7 +85,7 @@ vagrant-centos7            : ok=11   changed=2    unreachable=0    failed=0
 [{"userId":3,"score":-1236509442},{"userId":4,"score":-1164950331}]
 ```
 
-OR You can check by URL: http://<remote-server-ip>:8080/leaderboard
+OR You can check by URL: http://remote-server-ip:8080/leaderboard
 
 4. **Checking the log (On remote server)**
 ```
